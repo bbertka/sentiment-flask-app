@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentiment-flask-app-deployment
+  labels:
+    app: sentiment-flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sentiment-flask-app
+  template:
+    metadata:
+      labels:
+        app: sentiment-flask-app
+    spec:
+      containers:
+      - name: sentiment-flask-app
+        image: bbertka/sentiment-flask-app-arm64:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: AMAZON_USERNAME
+          value: "changeme"
+        - name: AMAZON_PASSWORD
+          value: "changeme"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentiment-flask-app-service
+spec:
+  selector:
+    app: sentiment-flask-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
