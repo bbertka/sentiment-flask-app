@@ -1,0 +1,5 @@
+Flask
+textblob
+pandas
+requests
+bs4
