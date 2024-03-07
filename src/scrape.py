@@ -14,7 +14,7 @@ custom_headers = {
 }
 
 def get_soup(url):
-    response = requests.get(url, headers=custom_headers, auth=('bbertka@gmail.com', 'ofelia213'))
+    response = requests.get(url, headers=custom_headers)
     if response.status_code != 200:
         print("Error in getting webpage")
         exit(-1)
