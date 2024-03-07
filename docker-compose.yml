@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  flask-app:
+    image: bbertka/sentiment-flask-app:latest
+    ports:
+      - "5000:5000"

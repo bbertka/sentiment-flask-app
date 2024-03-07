@@ -18,7 +18,8 @@ COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the Flask application files into the container
-COPY src/app.py app.py
+COPY src/*.py ./
+
 
 # Expose the port that the Flask application runs on
 EXPOSE 5000
