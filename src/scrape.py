@@ -3,7 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import time
+import time, os
 
 custom_headers = {
     "Accept-language": "en-GB,en;q=0.9",
@@ -14,7 +14,7 @@ custom_headers = {
 }
 
 def get_soup(url):
-    response = requests.get(url, headers=custom_headers)
+    response = requests.get(url, headers=custom_headers, auth=(os.getenv('AMAZON_USERNAME'), os.getenv('AMAZON_PASSWORD')) )
     if response.status_code != 200:
         print("Error in getting webpage")
         exit(-1)

@@ -1,7 +1,10 @@
-version: '3.8'
+yversion: '3.8'
 
 services:
   flask-app:
     image: bbertka/sentiment-flask-app:latest
     ports:
       - "5000:5000"
+    environment:
+      AMAZON_USERNAME: changeme
+      AMAZON_PASSWORD: changeme
